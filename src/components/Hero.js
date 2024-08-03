@@ -1,5 +1,130 @@
-
 // Below is the cristian mihai code for this component and its pretty good but In this code I find the state management little complex,so i write the above to make this simple
+import React, { useState, useEffect } from "react";
+// import logo
+import LogoDark from "../assets/img/logo-dark.svg";
+import LogoWhite from "../assets/img/logo-white.svg";
+// import icons
+import { BsFillSunFill, BsMoonFill, BsCheck } from "react-icons/bs";
+// import girl image
+import GirlImg from "../assets/img/girl.png";
+
+const Hero = () => {
+const [isDarkMode,setIsDarkMode]=useState(false)
+  // Function to toggle isDarkMode between 'dark' and  'light'
+  const toggleisDarkMode = () => {
+    setIsDarkMode(!isDarkMode)
+  };
+
+  return (
+    <section
+      className={`min-h-[550px] w-full bg-heroLight bg-cover bg-center bg-no-repeat overflow-hidden ${
+        isDarkMode  ?  "bg-heroDark" : "bg-heroLight"
+      }`}
+    >
+      <div className="container mx-auto px-4 lg:px-0">
+        {/* header */}
+        <header className="flex items-center justify-between py-3">
+          {/* logo */}
+          <div>
+            <a href="#">
+              {isDarkMode ? (
+                <img src={LogoWhite} alt="Logo" />
+              ) : (
+                <img src={LogoDark} alt="Logo" />
+              )}
+            </a>
+          </div>
+          {/* button */}
+          <button
+            onClick={toggleisDarkMode}
+            className="p-4 bg-accent text-white rounded-full w-12 h-12 flex justify-center items-center"
+          >
+            {isDarkMode  ? <BsMoonFill /> : <BsFillSunFill />}
+          </button>
+        </header>
+        {/* text & image wrapper */}
+        <div className="flex flex-col items-center lg:flex-row min-h-[350px] lg:min-h-[350px]">
+          {/* text */}
+          <div className="flex-1 flex flex-col justify-center items-start">
+            <h1
+              className={`text-5xl text-primary font-bold mb-6 leading-[60px] ${
+                isDarkMode  ? "text-red-100" : "text-black"
+              }`}
+            >
+              Online Accounting <br />
+              <span className="text-accent">Fast & Simple</span>
+            </h1>
+            <p
+              className={`font-light mb-8 max-w-[597px] ${
+                isDarkMode ? "text-red-100": "text-black"
+              }`}
+            >
+              We specialize in small businesses. Our goal is to eliminate
+              bureaucracy, creating a modern relationship between your company
+              and the accountant.
+            </p>
+
+            {/* checked items */}
+            <div className="flex flex-col gap-y-6 mb-6">
+              {/* item */}
+              <div className="flex items-center gap-x-2">
+                {/* item icon */}
+                <div
+                  className={`bg-accent/10 text-accent w-[20px] h-[20px] rounded-full flex justify-center items-center ${
+                    isDarkMode
+                      ? "bg-accent/70 text-red-50"
+                      : "bg-accent/20" 
+                  }`}
+                >
+                  <BsCheck />
+                </div>
+                {/* item text */}
+                <p
+                  className={`text-base font-light ${
+                    isDarkMode ? "text-white" : "text-black"
+                  }`}
+                >
+                  Have your accounting 100% online.
+                </p>
+              </div>
+              {/* item */}
+              <div className="flex items-center gap-x-2">
+                {/* item icon */}
+                <div
+                  className={`bg-accent/10 text-accent w-[20px] h-[20px] rounded-full flex justify-center items-center ${
+                    isDarkMode
+                      ? "bg-accent/70 text-red-50"
+                      : "bg-accent/20"
+                  }`}
+                >
+                  <BsCheck />
+                </div>
+                {/* item text */}
+                <p
+                  className={`text-base font-light ${
+                    isDarkMode ? "text-white" : "text-black"
+                  }`}
+                >
+                  Save with plans starting at $10/month.
+                </p>
+              </div>
+            </div>
+            {/* button */}
+            <button className="btn">Discover our plans</button>
+          </div>
+          {/* image */}
+          <div className="hidden lg:flex self-end w-[600px]">
+            <img src={GirlImg} alt="Girl" />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
+
+// Below is the cristian mihai code for this component and its pretty good but In this code I find the state management(for dark and light mode) little complex,so i write the above to make this simple!
 import React, { useState, useEffect } from 'react';
 // import logo
 import LogoDark from '../assets/img/logo-dark.svg';
